@@ -7,14 +7,14 @@ package wxx.leetcode.code;
  * @author Khada Jhin
  */
 
-class BTNOde{
+class BTNode{
     int val;
-    BTNOde left;
-    BTNOde right;
-    BTNOde(int v){
+    BTNode left;
+    BTNode right;
+    BTNode(int v){
         val = v;
     }
-    BTNOde(int v, BTNOde l, BTNOde r){
+    BTNode(int v, BTNode l, BTNode r){
         val = v;
         left = l;
         right = r;

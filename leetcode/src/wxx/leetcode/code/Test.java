@@ -13,13 +13,13 @@ class Test{
     public static void test1(int a){
         a = 666;
     }
-    public static void test1(BTNOde anode){
+    public static void test1(BTNode anode){
         anode.val = 666;
     }
     public static void main(String[] args) {
         String stringTest1 = "I am not happy now.";
         int intTest1 = 999;
-        BTNOde nodeTest1 = new BTNOde(999);
+        BTNode nodeTest1 = new BTNode(999);
         test1(intTest1);
         test1(stringTest1);
         test1(nodeTest1);
