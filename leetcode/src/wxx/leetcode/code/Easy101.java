@@ -13,8 +13,15 @@ public class Easy101{
         return false;
     }
     public static boolean others(BTNode root){
-        System.out.println("learn from others");
-        return true;
+        System.out.println("copy from disscuss");
+        return root==null || isSymmetricHelp(root.left, root.right);
+    }
+    private static boolean isSymmetricHelp(TreeNode left, TreeNode right){
+        if(left==null || right==null)
+            return left==right;
+        if(left.val!=right.val)
+            return false;
+        return isSymmetricHelp(left.left, right.right) && isSymmetricHelp(left.right, right.left);
     }
     public static void main(String[] args) {
         /**
@@ -26,6 +33,11 @@ public class Easy101{
         BTNOde node2 = new BTNOde(2, null, null);
         BTNOde node3 = new BTNOde(2, null, null);
         BTNOde root = new BTNOde(1, node2, node3);
-        System.out.println(root.val);
+        System.out.println(root.val + node2.val + node3.val);
+        if(Easy101.others(root) == true){
+            System.out.println("[" + root.val + "," + node2.val + "," + node3.val + "] is a symmetric tree.");
+        }
+        else
+            System.out.println("[" + root.val + "," + node2.val + "," + node3.val + "] is not a symmetric tree.");
     }
 }
