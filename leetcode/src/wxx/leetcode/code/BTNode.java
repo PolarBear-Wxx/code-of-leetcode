@@ -2,6 +2,7 @@ package wxx.leetcode.code;
 
 import java.util.Queue;
 import java.util.Stack;
+import java.util.concurrent.ArrayBlockingQueue; //java中import一个类，有两种方式，具体到名和到姓.*;
 
 /**
  * binary tree node
@@ -40,7 +41,7 @@ public class BTNode{
         int index = 1;
         //Stack<BTNode> stack = new Stack<BTNode>();
         //stack.push(root);
-        Queue<BTNode> queue = new ArrayBlockingQueue<BTNode>();
+        ArrayBlockingQueue<BTNode> queue = new ArrayBlockingQueue<BTNode>(20);
         queue.add(root);
         BTNode top,temp;
         while(queue.isEmpty()==false && index<array.length){

@@ -50,7 +50,7 @@ public class Easy101{
             return false;
         BTNode left, right;
         while(!stack.empty()==true){
-            //if(stack.size()%2!=0)  return false;  这行代码有必要吗？
+            if(stack.size()%2!=0)  return false;  //这行代码有必要吗？
             //good indentation habit : 小括号里的运算符就不要空格了
             right = stack.pop();
             left = stack.pop();
@@ -94,7 +94,8 @@ public class Easy101{
          *BTNode.test();
          *System.out.println("very good!");
          */
-        /* 
+        /** Before add toBTree.(int[] array) to BTNode.java, I have
+         *  to construct a binary tree in this way.
         BTNode node4 = new BTNode(3, null, null);
         BTNode node5 = new BTNode(4, null, null);
         BTNode node6 = new BTNode(4, null, null);
@@ -105,7 +106,7 @@ public class Easy101{
         */
         int[] data ={1,2,2,3,4,4,3};
         BTNode root = BTNode.toBTree(data);
-        if(Easy101.my_non_recursive(root) == true){
+        if(Easy101.others(root) == true){
             System.out.println("input: " + Arrays.toString(data) + " is a symmetric tree.");
         }
         else
