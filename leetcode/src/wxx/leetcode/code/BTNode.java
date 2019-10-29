@@ -5,7 +5,7 @@ import java.util.Stack;
 import java.util.concurrent.ArrayBlockingQueue; //java中import一个类，有两种方式，具体到名和到姓.*;
 
 /**
- * binary tree node
+ * binary tree node;
  * only use in this package -- 2019-10-25修改为public类
  * @version 1.01 2019-10-24
  * @author Khada Jhin
@@ -27,7 +27,7 @@ public class BTNode{
         System.out.println("BTNode import successfully!");
     }
     /**
-     * convert a integer array to a binary tree.
+     * convert a integer array to a binary tree;
      * "-1" indicates a empty node in the integer array!!!
      * @version 1.01 2019-10-25
      * @author Khada Jhin 
@@ -70,10 +70,25 @@ public class BTNode{
         return root;
     }
     /**
-     * convert a string to a binary tree
+     * convert a string to a binary tree;
      * establishe on 2019-10-25
      * @version 1.01 accomphlished on ???
      * @author Khada Jhin
      */
-    //public static BTNode toBTree(String s){}
+    /*
+    public static BTNode toBTree(String s){
+
+    }
+    */
+    /**
+     * convert a bianry tree to a integer array;
+     * use "-1" to show null node
+     * @version 1.01 2019-10-29
+     * @author Khada Jhin
+     */
+    /*
+    public static int[] toArray(BTNode root){
+
+    }
+    */
 }
