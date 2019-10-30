@@ -7,6 +7,7 @@ package wxx.leetcode.code;
  */
 
 class Test{
+    /*
     public static void test1(String s){
         s = "现在我很不开心";
     }
@@ -26,5 +27,9 @@ class Test{
         System.out.println(stringTest1);
         System.out.println(intTest1);
         System.out.println(nodeTest1.val);
+    }
+    */
+    public static void main(String[] args) {
+        System.out.println(Integer.toString(999));
     }
 }

@@ -1,8 +1,9 @@
 package wxx.leetcode.code;
 
-import java.util.Queue;
-import java.util.Stack;
-import java.util.concurrent.ArrayBlockingQueue; //java中import一个类，有两种方式，具体到名和到姓.*;
+//import java.util.Queue;
+//import java.util.Stack;
+//import java.util.concurrent.ArrayBlockingQueue; //java中import一个类，有两种方式，具体到名和到姓.*;
+import java.util.ArrayList;
 
 /**
  * binary tree node;
@@ -41,30 +42,34 @@ public class BTNode{
         int index = 1;
         //Stack<BTNode> stack = new Stack<BTNode>();
         //stack.push(root);
-        ArrayBlockingQueue<BTNode> queue = new ArrayBlockingQueue<BTNode>(20);
-        queue.add(root);
+        KJLinkedQueue<BTNode> queue = new KJLinkedQueue<BTNode>();
+        queue.enqueue(root);
         BTNode top,temp;
         while(queue.isEmpty()==false && index<array.length){
-            top = queue.poll();
+            top = queue.dequeue();
             if(array[index]!=-1){
                 temp = new BTNode(array[index]);
                 top.left = temp;
-                queue.add(temp);
+                queue.enqueue(temp);
                 index += 1;
+                if(index>=array.length) break;
             }
             else{
                 top.left = null;
                 index += 1;
+                if(index>=array.length) break;
             }
             if(array[index]!=-1){
                 temp = new BTNode(array[index]);
                 top.right = temp;
-                queue.add(temp);
+                queue.enqueue(temp);
                 index += 1;
+                if(index>=array.length) break;
             }
             else{
                 top.right = null;
                 index += 1;
+                if(index>=array.length) break;
             }
         }
         return root;
@@ -81,14 +86,47 @@ public class BTNode{
     }
     */
     /**
-     * convert a bianry tree to a integer array;
-     * use "-1" to show null node
+     * convert a bianry tree to a String;
      * @version 1.01 2019-10-29
      * @author Khada Jhin
      */
-    /*
-    public static int[] toArray(BTNode root){
-
+    
+    public static StringBuilder toString(BTNode root){
+        if(root==null) return null;
+        ArrayList<Integer> array = new ArrayList<Integer>();  //ArrayList<E>  中的E不能是“int”？
+        KJLinkedQueue<BTNode> queue =  new KJLinkedQueue<BTNode>();
+        array.add(root.val);
+        queue.enqueue(root);
+        BTNode head;
+        while(!queue.isEmpty()){
+            head = queue.dequeue();
+            if(head.left==null) array.add(null);
+            else{
+                array.add(head.left.val);
+                queue.enqueue(head.left);
+            }
+            if(head.right==null) array.add(null);
+            else{
+                array.add(head.right.val);
+                queue.enqueue(head.right);
+            }
+        }
+        while(array.get(array.size()-1)==null){
+            array.remove(array.size()-1);
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for(Integer i : array){
+            sb.append(i); // equals to "sb.append(i.toString());"
+            sb.append(",");
+        }
+        sb.deleteCharAt(sb.length()-1);
+        sb.append("]");
+        return sb;
     }
-    */
+    public static void main(String[] args) {
+        int[] test = {1,2,3,-1,5,6,-1,7,-1,8};
+        BTNode ttest =  BTNode.toBTree(test);
+        System.out.println(BTNode.toString(ttest));
+    }
 }

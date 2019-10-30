@@ -8,11 +8,18 @@ package wxx.leetcode.code;
 
 public class GenerateBST{
     private static int[] array;
-    public static BTNode mine(){
+    /**
+     * successed, faster than 100% ..., memory usage less than 100% ...;
+     * @param nums
+     * @return
+     */
+    public static BTNode mine(int[] nums){
+        array = nums;
+        if(array.length==0) return null;
         int left = 0;
         int right = array.length - 1;
         if(left==right) return new BTNode(array[left]);
-        int index = (left+right) - 1;
+        int index = (left+right)/2;
         BTNode root = new BTNode(array[index]);
         root.left = gh(left, index-1);
         root.right = gh(index+1, right);
