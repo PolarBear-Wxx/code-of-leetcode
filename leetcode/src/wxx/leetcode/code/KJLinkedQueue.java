@@ -27,11 +27,11 @@ public class KJLinkedQueue<E> implements KJQueue<E>{
         public Node(E e){
             this(e, null);
         }
-
+        /*
         public Node(){
             this(null, null);
         }
-
+        */
         @Override
         public String toString(){
             return e.toString();
