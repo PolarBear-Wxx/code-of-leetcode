@@ -91,12 +91,12 @@ public class BTNode{
      * @author Khada Jhin
      */
     
-    public static StringBuilder toString(BTNode root){
-        if(root==null) return null;
+    public String toString(){
+        //if(this==null) return null;
         ArrayList<Integer> array = new ArrayList<Integer>();  //ArrayList<E>  中的E不能是“int”？
         KJLinkedQueue<BTNode> queue =  new KJLinkedQueue<BTNode>();
-        array.add(root.val);
-        queue.enqueue(root);
+        array.add(this.val);
+        queue.enqueue(this);
         BTNode head;
         while(!queue.isEmpty()){
             head = queue.dequeue();
@@ -122,11 +122,12 @@ public class BTNode{
         }
         sb.deleteCharAt(sb.length()-1);
         sb.append("]");
-        return sb;
+        String s = sb.toString();
+        return s;
     }
     public static void main(String[] args) {
         int[] test = {1,2,3,-1,5,6,-1,7,-1,8};
         BTNode ttest =  BTNode.toBTree(test);
-        System.out.println(BTNode.toString(ttest));
+        System.out.println(ttest);
     }
 }
