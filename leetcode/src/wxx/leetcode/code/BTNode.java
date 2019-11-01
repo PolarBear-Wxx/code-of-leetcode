@@ -5,6 +5,8 @@ package wxx.leetcode.code;
 //import java.util.concurrent.ArrayBlockingQueue; //java中import一个类，有两种方式，具体到名和到姓.*;
 import java.util.ArrayList;
 
+//import sun.net.www.content.text.plain;
+
 /**
  * binary tree node;
  * only use in this package -- 2019-10-25修改为public类
@@ -125,9 +127,16 @@ public class BTNode{
         String s = sb.toString();
         return s;
     }
+    public int depth(){
+        //if(this==null) return 0;
+        int leftDepth = this.left==null ? 0 : this.left.depth();
+        int rigthDepth = this.right==null ? 0 : this.right.depth();
+        return Math.max(leftDepth, rigthDepth)+1;
+    }
     public static void main(String[] args) {
-        int[] test = {1,2,3,-1,5,6,-1,7,-1,8};
+        int[] test = {-1,2,3,-1,5,6,-1,7,-1,8};
         BTNode ttest =  BTNode.toBTree(test);
         System.out.println(ttest);
+        System.out.println(ttest.depth());
     }
 }

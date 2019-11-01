@@ -39,10 +39,24 @@ public class IsBalanced{
         if(theDeepestLeaf-theShallowestLeaf>1) return false;
         return true;
     }
+    public static int depth(BTNode root){
+        if(root==null) return 0;
+        int leftDepth = root.left==null ? 0 : depth(root.left);
+        int rightDepth = root.right==null ? 0 : depth(root.right);
+        return Math.max(leftDepth, rightDepth)+1;
+    }
+    public static boolean others(BTNode root){
+        if(root==null) return true;
+        int left = depth(root.left);
+        int right = depth(root.right);
+        boolean debug = Math.abs(left-right) <= 1;
+        return debug && others(root.left) && others(root.right);
+    }
     public static void main(String[] args) {
-        int[] test = {1,1,1,1,1,1,1,-1,-1,1,-1,1,1,1,-1,-1,-1,1};
+        int[] test = {1,2,2,3,3,-1,-1,4,4};
         BTNode root = BTNode.toBTree(test);
         System.out.println(root);
         System.out.println(mine(root));
+        System.out.println(others(root));
     }
 }
