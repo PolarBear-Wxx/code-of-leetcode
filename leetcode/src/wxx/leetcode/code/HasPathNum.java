@@ -25,23 +25,42 @@ public class HasPathNum{
             if(curreBtNode.left != null && curreBtNode.left.val + current_sum <= sum){
                 list.offer(curreBtNode.left);
                 current_path_sum.offer(curreBtNode.left.val + current_sum);
-                if(curreBtNode.right != null && curreBtNode.right.val + current_sum <= sum){
-                    list.offer(curreBtNode.right);
-                    current_path_sum.offer(curreBtNode.right.val + current_sum);
-                }
             }
-            else if(curreBtNode.right != null && curreBtNode.right.val + current_sum <= sum){
+            if(curreBtNode.right != null && curreBtNode.right.val + current_sum <= sum){
                 list.offer(curreBtNode.right);
                 current_path_sum.offer(curreBtNode.right.val + current_sum);
             }
-
         }
         return false;
     }
+    public static boolean mine2(BTNode root, int sum){
+        if(root == null) return false;
+        LinkedList<BTNode> list = new LinkedList<BTNode>();
+        LinkedList<Integer> current_path_sum = new LinkedList<Integer>();
+        list.offer(root);
+        current_path_sum.offer(root.val);
+        BTNode curreBtNode;
+        int current_sum;
+        while(list.isEmpty() == false ){
+            curreBtNode = list.poll();
+            current_sum = current_path_sum.poll();
+            if(current_sum == sum && curreBtNode.left == null && curreBtNode.right == null) return true;
+            if(curreBtNode.left != null){
+                list.offer(curreBtNode.left);
+                current_path_sum.offer(curreBtNode.left.val + current_sum);
+            }
+            if(curreBtNode.right != null){
+                list.offer(curreBtNode.right);
+                current_path_sum.offer(curreBtNode.right.val + current_sum);
+            }
+        }
+        return false; 
+    }
     public static void main(String[] args) {
-        int[] test = {5,4,8,11,-1,13,4,7,2,-1,-1,-1,1};
+        int[] test = {-2,-1,-3};
         BTNode ttest = BTNode.toBTree(test);
         System.out.println(ttest);
-        System.out.println(mine(ttest, 22));
+        System.out.println(mine(ttest, -5));
+        System.out.println(mine2(ttest, -5));
     }
 }
