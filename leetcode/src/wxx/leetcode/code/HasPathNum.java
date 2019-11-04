@@ -56,11 +56,17 @@ public class HasPathNum{
         }
         return false; 
     }
+    public static boolean others(BTNode root, int sum){
+        if(root == null) return false;
+        if(root.left == null && root.right == null && root.val == sum) return true;
+        return others(root.left, sum - root.val) || others(root.right, sum - root.val);
+    }
     public static void main(String[] args) {
         int[] test = {-2,-1,-3};
         BTNode ttest = BTNode.toBTree(test);
         System.out.println(ttest);
         System.out.println(mine(ttest, -5));
         System.out.println(mine2(ttest, -5));
+        System.out.println(others(ttest, -5));
     }
 }
