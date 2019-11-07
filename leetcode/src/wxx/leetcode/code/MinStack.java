@@ -71,17 +71,30 @@ class MinStack {
     }*/
     public static void main(String[] args) {
         MinStack minStack = new MinStack();
-        minStack.push(-2);
-        System.out.println(minStack.stack + "  " + minStack.min);
-        minStack.push(0);
-        System.out.println(minStack.stack + "  " + minStack.min);
-        minStack.push(-3);
-        System.out.println(minStack.stack + "  " + minStack.min);
-        minStack.getMin();   //--> Returns -3.
+        System.out.println(Integer.MAX_VALUE);
+        System.out.println(Integer.MIN_VALUE);
+        //Stack<Integer> test = new Stack<>();
+        //System.out.println(test);
+        minStack.push(1);
+        System.out.println(minStack.stack + "  " + minStack.min + "  " + minStack.min_stack);
+        minStack.push(1);
+        System.out.println(minStack.stack + "  " + minStack.min + "  " + minStack.min_stack);
+        minStack.push(3);
+        System.out.println(minStack.stack + "  " + minStack.min + "  " + minStack.min_stack);
+        minStack.push(3);
+        System.out.println(minStack.stack + "  " + minStack.min + "  " + minStack.min_stack);
+        minStack.push(1);
+        System.out.println(minStack.stack + "  " + minStack.min + "  " + minStack.min_stack);
         minStack.pop();
-        System.out.println(minStack.stack + "  " + minStack.min);
-        minStack.top();      //--> Returns 0.
-        minStack.getMin();   //--> Returns -2.
+        System.out.println(minStack.stack + "  " + minStack.min + "  " + minStack.min_stack);
+        minStack.pop();
+        System.out.println(minStack.stack + "  " + minStack.min + "  " + minStack.min_stack);
+        minStack.pop();
+        System.out.println(minStack.stack + "  " + minStack.min + "  " + minStack.min_stack);
+        minStack.pop();
+        System.out.println(minStack.stack + "  " + minStack.min + "  " + minStack.min_stack);
+        minStack.pop();
+        System.out.println(minStack.stack + "  " + minStack.min + "  " + minStack.min_stack);
     }
     int min = Integer.MAX_VALUE;
     Stack<Integer> stack = new Stack<Integer>();
@@ -101,7 +114,8 @@ class MinStack {
     public void pop() {
         if(stack.peek() == min){
             min_stack.pop();
-            min = min_stack.peek();
+            if(!min_stack.isEmpty()) min = min_stack.peek();
+            else min = Integer.MAX_VALUE;
         }
         stack.pop();
     }
