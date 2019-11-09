@@ -1,6 +1,7 @@
 package wxx.leetcode.code;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * made for leetcode
@@ -90,5 +91,33 @@ public class Solution{
             }
         }
         return result;
+    }
+
+    /**
+     * easy-169 Majority Element
+     */
+    public int majorityElement(int[] nums) {
+        //int len = nums.length;
+        //int map[] = new int[len];
+        Arrays.sort(nums);
+        int len = nums.length;
+        return nums[len / 2];
+    }
+
+    /**
+     * easy-189 Rotate Array (tag:Array)
+     */
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        for(int i = 0; i < k; i++){
+            int pre = nums[0];
+            int tem;
+            for(int j = 0; j < n-1; j++){
+                tem = nums[j+1];
+                nums[j+1] = pre;
+                pre = tem;
+            }
+            nums[0] = pre;
+        }
     }
 }
