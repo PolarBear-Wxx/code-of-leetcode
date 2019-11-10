@@ -2,6 +2,8 @@ package wxx.leetcode.code;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * made for leetcode
@@ -119,5 +121,32 @@ public class Solution{
             }
             nums[0] = pre;
         }
+    }
+
+    /**
+     * easy-217 Contains Duplicate
+     */
+    public boolean containsDuplicate(int[] nums) {
+        Set<Integer> set = new HashSet<Integer>();
+        for(int i = 0; i < nums.length; i++){
+            if(set.contains(nums[i])) return true;
+            set.add(nums[i]);
+        }
+        return false;
+    }
+
+    /**
+     * easy-203 Remove Linked List Elements
+     */
+    public ListNode removeElements(ListNode head, int val) {
+        while(head != null && head.val == val){
+            head = head.next;
+        }
+        ListNode p = head;
+        while(p != null && p.next != null){
+            if(p.next.val == val) p.next = p.next.next;
+            else p = p.next;
+        }
+        return head;
     }
 }
