@@ -134,7 +134,7 @@ public class BTNode{
         return Math.max(leftDepth, rigthDepth)+1;
     }
     public static void main(String[] args) {
-        int[] test = {-1,2,3,-1,5,6,-1,7,-1,8};
+        int[] test = {1,2,3,-1,5,6,-1,7,-1,8};
         BTNode ttest =  BTNode.toBTree(test);
         System.out.println(ttest);
         System.out.println(ttest.depth());

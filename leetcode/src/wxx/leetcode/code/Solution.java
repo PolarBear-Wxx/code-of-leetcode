@@ -3,7 +3,10 @@ package wxx.leetcode.code;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
+import java.util.Stack;
 
 /**
  * made for leetcode
@@ -11,14 +14,6 @@ import java.util.Set;
  * @author Khada Jhin
  */
 
-class ListNode{
-    int val;
-    ListNode next;
-    ListNode(int x){
-        val = x;
-        next = null;
-    }
-}
 public class Solution{
 
     /**
@@ -148,5 +143,71 @@ public class Solution{
             else p = p.next;
         }
         return head;
+    }
+
+    /**
+     * easy-206 Reverse Linked List
+     */
+    public ListNode reverseList(ListNode head) {
+        if(head == null) return null;
+        ListNode p = head;
+        ListNode newHead = null,generate;
+        while(p != null){
+             generate = new ListNode(p.val);
+             generate.next = newHead;
+             newHead = generate;
+             p = p.next;
+        }
+        /* !! loss the old one !!
+        ListNode newHead = null;
+        ListNode old_head;
+        while(head != null){
+            old_head = head.next;
+            head.next = newHead;
+            newHead = head;
+            head = old_head;
+        }*/
+        System.out.println(head);
+        return newHead;
+    }
+
+    /**
+     * easy-268
+     */
+    public int missingNumber(int[] nums) {
+        Arrays.sort(nums);
+        if(nums[nums.length-1] == nums.length - 1) return nums.length;
+        int result = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] != i){ 
+                result = i;
+                break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * easy-94 Binary Tree Inorder Traversal
+     */
+    public ArrayList<Integer> inorderTraversal(TreeNode root) {
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        if(root == null) return null;
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        stack.push(root);
+        TreeNode cur_node = null;
+        while(!stack.isEmpty()){
+            cur_node = stack.peek();
+            if(cur_node.left != null){
+                stack.push(cur_node.left);
+            }
+            else{
+                result.add(cur_node.val);
+                stack.pop();
+                if(cur_node.right != null) stack.push(cur_node.right);
+            }
+            //stack.pop();
+        }
+        return result;
     }
 }
