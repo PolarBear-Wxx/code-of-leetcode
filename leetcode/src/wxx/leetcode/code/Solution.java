@@ -3,8 +3,8 @@ package wxx.leetcode.code;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+//import java.util.LinkedList;
+//import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
@@ -193,6 +193,8 @@ public class Solution{
     public ArrayList<Integer> inorderTraversal(TreeNode root) {
         ArrayList<Integer> result = new ArrayList<Integer>();
         if(root == null) return null;
+        inorder_help(root, result);
+        /*
         Stack<TreeNode> stack = new Stack<TreeNode>();
         stack.push(root);
         TreeNode cur_node = null;
@@ -208,6 +210,13 @@ public class Solution{
             }
             //stack.pop();
         }
+        */
         return result;
+    }
+    private void inorder_help(TreeNode aroot, ArrayList<Integer> alist){
+        if(aroot == null) return;
+        if(aroot.left != null) inorder_help(aroot.left, alist);
+        alist.add(aroot.val);
+        if(aroot.right != null) inorder_help(aroot.right, alist);
     }
 }
