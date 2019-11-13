@@ -255,8 +255,18 @@ public class Solution{
      * easy-234 Plindrome Linked List
      */
     public boolean isPalindrome(ListNode head) {
-        if(head == null) return true;
-        
-        return false;
+        ListNode faster = head, slower = head;
+        while(faster != null && faster.next != null){
+            faster = faster.next.next;
+            slower = slower.next;
+        }
+        if(faster != null) slower = slower.next;
+        slower = reverseList(slower);
+        while(slower != null){
+            if(slower.val != head.val) return false;
+            slower = slower.next;
+            head = head.next;
+        }
+        return true;
     }
 }
