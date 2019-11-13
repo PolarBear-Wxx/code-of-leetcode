@@ -30,6 +30,7 @@ class Test{
     }
     */
     public static void main(String[] args) {
-        System.out.println(Integer.toString(999));
+        int [] test = new int[5];
+        System.out.println(test[4]);
     }
 }

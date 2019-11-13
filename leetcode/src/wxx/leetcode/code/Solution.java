@@ -3,10 +3,7 @@ package wxx.leetcode.code;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-//import java.util.LinkedList;
-//import java.util.List;
 import java.util.Set;
-import java.util.Stack;
 
 /**
  * made for leetcode
@@ -218,5 +215,48 @@ public class Solution{
         if(aroot.left != null) inorder_help(aroot.left, alist);
         alist.add(aroot.val);
         if(aroot.right != null) inorder_help(aroot.right, alist);
+    }
+
+    /**
+     * easy-283 Move Zeros
+     */
+    public void moveZeroes(int[] nums) {
+        int nonzero_count = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] != 0){
+                nums[nonzero_count] = nums[i];
+                nonzero_count += 1;
+            }
+        }
+        for(int i = nonzero_count; i < nums.length; i++){
+            nums[i] = 0;
+        }
+    }
+
+    /**
+     * easy-448 Find All Numbers Disappeared in an Array
+     */
+    public ArrayList<Integer> findDisappearedNumbers(int[] nums) {
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        int n = nums.length;
+        int help[] = new int[n];
+        for(int i = 0; i < n; i++){
+            help[nums[i] - 1] = -1;
+        }
+        for(int i = 0; i < n; i++){
+            if(help[i] != -1){
+                result.add(i+1);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * easy-234 Plindrome Linked List
+     */
+    public boolean isPalindrome(ListNode head) {
+        if(head == null) return true;
+        
+        return false;
     }
 }
