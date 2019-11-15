@@ -269,4 +269,23 @@ public class Solution{
         }
         return true;
     }
+
+    /**
+     * easy-485 Max Consecutive Ones
+     */
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int result = 0;
+        int count = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == 1){
+                count += 1;
+            }
+            else{
+                if(count > result) result = count;
+                count = 0;
+            }
+        }
+        if(count > result) result = count; //处理数组中没有“0”的情况。
+        return result;
+    }
 }
