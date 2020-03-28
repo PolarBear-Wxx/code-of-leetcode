@@ -7,30 +7,9 @@ package wxx.leetcode.code;
  */
 
 class Test{
-    /*
-    public static void test1(String s){
-        s = "现在我很不开心";
-    }
-    public static void test1(int a){
-        a = 666;
-    }
-    public static void test1(BTNode anode){
-        anode.val = 666;
-    }
     public static void main(String[] args) {
-        String stringTest1 = "I am not happy now.";
-        int intTest1 = 999;
-        BTNode nodeTest1 = new BTNode(999);
-        test1(intTest1);
-        test1(stringTest1);
-        test1(nodeTest1);
-        System.out.println(stringTest1);
-        System.out.println(intTest1);
-        System.out.println(nodeTest1.val);
-    }
-    */
-    public static void main(String[] args) {
-        int [] test = new int[5];
-        System.out.println(test[4]);
+       Solution test = new Solution();
+       int[][] array = {{1,4},{3,2}};
+       System.out.println(Arrays.deepToString(test.matrixReshape(array, 1, 0)));
     }
 }

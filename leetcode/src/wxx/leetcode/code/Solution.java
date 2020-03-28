@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.lang.model.util.ElementScanner6;
+
 /**
  * made for leetcode
  * 2019-11-7 
@@ -287,5 +289,160 @@ public class Solution{
         }
         if(count > result) result = count; //处理数组中没有“0”的情况。
         return result;
+    }
+
+    /**
+     * tag: array
+     * easy-509 Fibonacci Number
+     * @param N
+     * @return
+     */
+    public int fib(int N) {
+        if(N == 0 || N == 1)
+            return N;
+        return fib(N-1) + fib(N-2);
+    }
+    public int fib_iterative(int N){
+        if(N <= 1)
+            return N;
+        int a = 0, b = 1;
+        while(N > 1){
+            int sum = a + b;
+            a = b;
+            b = sum;
+            N--;
+        }
+        return b;
+    }
+
+    /**
+     * tag: array
+     * easy-532  K-diff Pairs in an Array
+     * unaccepted!!!
+     */
+    public int findPairs(int[] nums, int k) {
+        int length = nums.length;
+        int pairs = 0;
+        for(int i = 0; i < length - 1; i++){
+            for(int j = i + 1; j < length; j++){
+                if(nums[i] - nums[j] == k){
+                    pairs++;
+                    System.out.println(i + "," + j);
+                    break;
+                }
+            }
+            if(k == 0)
+                break;
+            for(int j = i + 1; j < length; j++){
+                if(nums[j] - nums[i] == k){
+                    pairs++;
+                    System.out.println(i + "," + j);
+                    break;
+                }
+            }
+        }
+        return pairs;
+    }
+
+    /**
+     * tag: array
+     * easy-849 Maximize Distance to Closest Person
+     */
+    public int maxDistToClosest(int[] seats) {
+        int head = 0, tail = seats.length - 1;
+        int forepart = 0, afterbody = 0, center_section = 0;
+        while(seats[head] == 0){
+            head++;
+            forepart++;
+        }
+        while(seats[tail] == 0){
+            tail--;
+            afterbody++;
+        }
+        if(head == tail){
+            return Math.max(forepart, afterbody);
+        }
+        int head_section = 0, max_center = 0;
+        while(head != tail){
+            head++;
+            while(seats[head] == 0){
+                head++;
+                head_section++;
+            }
+            max_center = Math.max(max_center, head_section);
+            head_section = 0;
+        }
+        /*
+        if(max_center == 0)
+            center_section = max_center;
+        else if(max_center % 2 == 1)
+            center_section = max_center / 2 + 1;
+        else
+            center_section = max_center / 2;
+        */
+        center_section = (max_center + 1) / 2;
+        int temp = Math.max(forepart, afterbody);
+        return Math.max(temp, center_section);
+    }
+
+    /**
+     * tag: array
+     * easy-561 Array Partition I
+     */
+    public int arrayPairSum(int[] nums) {
+        bubbleSort(nums);
+        int sum = 0;
+        for(int i = 0; i < nums.length; i += 2){
+            sum += nums[i];
+        }
+        return sum;
+    }
+    public void bubbleSort(int[] array){
+        if(array == null){
+            System.out.println("The array is null!");
+            return;
+        }
+        if(array.length <= 1)
+            return;
+        int len = array.length;
+        boolean changed = false;
+        for(int i = 0; i < len; i++){
+            for(int j = 0; j < len - 1 - i; j++){
+                if(array[j] > array[j+1]){
+                    int temp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = temp;
+                    changed = true;
+                }
+            }
+            if(changed == false)
+                break;
+            else
+                changed = false;
+            //Arrays.sort(array);
+        }
+    }
+    
+    /**
+     * tag: array
+     * easy-566 Reshape the Matrix
+     */
+    public int[][] matrixReshape(int[][] nums, int r, int c) {
+        int row = nums.length, column = nums[0].length;
+        if(row * column != r * c)
+            return nums;
+        int[] temp = new int[row * column];
+        for(int i = 0; i < nums.length; i++){
+            for(int j = 0; j < column; j++){
+                temp[i * column + j] = nums[i][j];
+            }
+        }
+        int[][] res = new int[r][c];
+        for(int i = 0; i < r; i++){
+            for(int j = 0; j < c; j++){
+                res[i][j] = temp[i * c + j];
+            }
+        }
+        return res;
     }
 }
